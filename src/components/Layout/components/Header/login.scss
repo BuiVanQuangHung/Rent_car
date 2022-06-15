@@ -1,0 +1,24 @@
+.container_login {
+    width: auto;
+    .title {
+        text-align: center;
+        margin: 2rem 0;
+    }
+    .text_field {
+        margin: 1rem 0;
+        input {
+            font-size: medium;
+        }
+    }
+    #errors {
+        color: red;
+        text-transform: uppercase;
+    }
+    .btn_signin {
+        width: 100%;
+        margin: 1rem 0;
+        background-color: #00a550;
+        padding: 1rem ;
+        font-size: medium;
+    }
+}

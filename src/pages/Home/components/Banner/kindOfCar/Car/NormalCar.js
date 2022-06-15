@@ -28,7 +28,7 @@ export default function NormalCar() {
     //! Data
     const Dumydata = {
         id: 0,
-        img: 'https://www.motofoto.in/images/search-car.gif',
+        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZqMFbSZbAtSzjsCIs9jWQdN3uOa-JtmWa9g&usqp=CAU',
         title: 'Giới thiệu',
         detail: '- Tài xế sẽ đón và đưa bạn di chuyển đến các địa điểm trong cùng thành phố - Bạn không cần nhập Điểm đến, hãy trao đổi lộ trình mong muốn với Tài xế. - Giá thuê của chuyến đi được tính theo thời gian bạn lựa chọn trên ứng dụng, đã bao gồm tiền tài xế, xăng xe, phí qua đêm.',
     };

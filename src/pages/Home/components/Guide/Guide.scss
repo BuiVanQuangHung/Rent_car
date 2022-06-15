@@ -1,0 +1,80 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.guide {
+    background: #e5f6ea;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h1 {
+        margin: 5rem 0;
+        font-size: xx-large;
+    }
+    .guide_img {
+        display: flex;
+        justify-content: center;
+        .guide_img1 {
+            display: flex;
+            .car_img {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                a {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    img {
+                        width: 80%;
+                    }
+                }
+                p {
+                    margin: 2rem 0;
+                    font-size: large;
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+    .seemore {
+        width: 100%;
+        text-align: end;
+        margin-right: 10rem;
+        font-size: 14px;
+        color: #141414;
+        text-transform: uppercase;
+        letter-spacing: 1.3px;
+        margin-bottom: 5rem;
+        transition: 0.3s ease-in-out;
+        &:hover {
+            letter-spacing: 2px;
+            color: #15cb1b;
+        }
+    }
+}
+@media only screen and (max-width: 600px) {
+    .guide {
+        .guide_img {
+            .guide_img1 {
+                flex-direction: column;
+                .car_img {
+                    a {
+                        img {
+                            width: 75%;
+                        }
+                    }
+                    p {
+                        margin: 1rem 0;
+                        font-size: small;
+                        font-weight: 700;
+                    }
+                }
+            }
+        }
+        .seemore {
+            margin-right: 3rem;
+        }
+    }
+}

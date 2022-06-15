@@ -1,0 +1,41 @@
+.contain_guide {
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    // background-color: black;
+    background: black;
+    width: 100%;
+    color: white;
+    h1 {
+        height: 75%;
+        display: flex;
+        align-items: center;
+        font-size: 4rem;
+    }
+    a {
+        font-size: medium;
+        display: flex;
+        .normal {
+            span {
+                margin: 2rem;
+                color: white;
+                font-weight: bolder;
+            }
+        }
+        .active {
+            border-bottom: 3px solid white;
+            color: white;
+        }
+    }
+}
+.content_render {
+    padding: 10rem 0;
+    display: flex;
+    justify-content: center;
+    background: url('https://img.freepik.com/free-photo/front-view-generic-brandless-moder-car_110488-502.jpg?w=2000');
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

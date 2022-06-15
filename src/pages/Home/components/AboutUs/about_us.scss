@@ -1,0 +1,47 @@
+.container_about_us {
+    background: url('https://www.mioto.vn/static/media/bg-news.3807ef8d.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 10rem 0 15rem;
+    h1 {
+        margin-bottom: 5rem;
+        font-size: xx-large;
+    }
+    .about_us_img {
+        display: flex;
+        justify-content: center;
+        width: 70%;
+        a {
+            img {
+                margin: 0 1rem;
+                object-fit: cover;
+                height: 250px;
+            }
+        }
+    }
+}
+@media only screen and (max-width: 600px) {
+    .container_about_us {
+        padding: 5rem 0rem 10rem;
+        h1 {
+            margin-bottom: 5rem;
+            font-size: x-large;
+        }
+        .about_us_img {
+            a {
+                img > * {
+                    display: none;
+                    &:nth-child(1) {
+                        display: block;
+                        width: auto;
+                        margin: 0 2rem;
+                    }
+                }
+            }
+        }
+    }
+}

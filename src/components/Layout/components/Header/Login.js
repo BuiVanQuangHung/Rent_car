@@ -1,135 +1,140 @@
 import * as React from 'react';
+import { Button, TextField, InputAdornment, Typography, Divider, Stack } from '@mui/material';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import LockIcon from '@mui/icons-material/Lock';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import InputAdornment from '@mui/material/InputAdornment';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Divider from '@mui/material/Divider';
-import Stack from '@mui/material/Stack';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import GoogleIcon from '@mui/icons-material/Google';
-const theme = createTheme();
+import * as Yup from 'yup';
+import { Formik, Form } from 'formik';
+import './login.scss';
+import { useState } from 'react';
 
 export default function Login() {
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-        });
+    const initialValues = {
+        user: '',
+        password: '',
     };
-    return (
-        <ThemeProvider theme={theme}>
-            <Container component="main" minWidth="xs">
-                <CssBaseline />
-                <Box
-                    sx={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                    }}
-                >
-                    <Typography component="h1" variant="h3" sx={{ fontWeight: 'bolder' }}>
-                        Đăng nhập
-                    </Typography>
+    const validationSchema = Yup.object({
+        user: Yup.string()
+            .min(3, 'At least 5 characters')
+            .max(15, 'Max 15 characters or less')
+            .required('Invalid username'),
+        password: Yup.string().min(6, 'Password must be at least 6 charaters').required('Password invalid'),
+    });
+    //! Database Login
+    const database = [
+        {
+            username: 'quanghung',
+            password: '123456',
+        },
+        {
+            username: 'admin',
+            password: 'pass2',
+        },
+    ];
+    const onSubmit = (values, { resetForm }) => {
+        const userData = database.find((e) => e.username === values.value);
+        console.log(userData);
+        // if (userData) {
+        //     if (userData.password !== password.value) {
+        //         // Invalid password
+        //         setErrorMessages({ name: 'pass', message: errors.pass });
+        //     } else {
+        //         setIsSubmitted(true);
+        //     }
+        // } else {
+        //     // Username not found
+        //     setErrorMessages({ name: 'uname', message: errors.uname });
+        // }
+        resetForm();
+    };
 
-                    <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-                        <TextField
-                            margin="normal"
-                            required
-                            fullWidth
-                            name="email"
-                            placeholder="Email"
-                            type="email"
-                            id="Email"
-                            InputProps={{
-                                style: { fontSize: 15 },
-                                startAdornment: (
-                                    <InputAdornment position="start">
-                                        <MailOutlineIcon sx={{ color: 'green' }} />
-                                    </InputAdornment>
-                                ),
-                            }}
-                        />
-                        <TextField
-                            margin="normal"
-                            required
-                            fullWidth
-                            name="password"
-                            placeholder="Mật Khẩu"
-                            type="password"
-                            id="password"
-                            autoComplete="current-password"
-                            InputProps={{
-                                style: { fontSize: 15 },
-                                startAdornment: (
-                                    <InputAdornment position="start">
-                                        <LockIcon sx={{ color: 'green' }} />
-                                    </InputAdornment>
-                                ),
-                            }}
-                        />
-                        <Link href="#" variant="body2" sx={{ fontSize: 'larger' }}>
-                            Quên mật khẩu?
-                        </Link>
-                        <Button
-                            type="submit"
-                            variant="contained"
-                            color="success"
-                            fullWidth
-                            sx={{ mt: 3, mb: 2, padding: '1.5rem 0', fontSize: '15px', fontWeight: 'bolder' }}
-                        >
-                            Đăng nhập
-                        </Button>
-                        <Grid container>
-                            <Grid item>
-                                <Link href="#" variant="body2" sx={{ fontSize: 'larger' }}>
-                                    {'Bạn chưa là thành viên? ? Hãy đăng kí ngay!'}
-                                </Link>
-                            </Grid>
-                        </Grid>
-                        <Divider sx={{ mt: 2 }} />
-                        <Typography
-                            variant="caption"
-                            display="block"
-                            gutterBottom
-                            align="center"
-                            sx={{ fontSize: 'larger', mt: 2, mb: 2 }}
-                        >
-                            Hoặc đăng nhập bằng tài khoản
-                        </Typography>
-                        <Stack
-                            direction="row"
-                            spacing={2}
-                            sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-                        >
-                            <Button
-                                variant="contained"
-                                startIcon={<FacebookIcon />}
-                                sx={{ padding: '1rem 4rem', fontSize: 'larger' }}
-                            >
-                                Facebook
+    //! Render
+    return (
+        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
+            <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
+                {(props) => (
+                    <div className="container_login">
+                        <h1 className="title">Đăng Nhập</h1>
+                        <Form className="form_signup">
+                            <TextField
+                                className="text_field"
+                                fullWidth
+                                name="user"
+                                onChange={props.handleChange}
+                                onBlur={props.handleBlur}
+                                value={props.values.user}
+                                placeholder="Tên đăng nhập"
+                                type="text"
+                                InputProps={{
+                                    startAdornment: (
+                                        <InputAdornment position="start">
+                                            <MailOutlineIcon fontSize="large" sx={{ color: '#00a550' }} />
+                                        </InputAdornment>
+                                    ),
+                                }}
+                            />
+                            {props.touched.user && props.errors.user ? (
+                                <div id="errors">{props.errors.user}</div>
+                            ) : null}
+                            <TextField
+                                className="text_field"
+                                fullWidth
+                                name="password"
+                                onChange={props.handleChange}
+                                onBlur={props.handleBlur}
+                                value={props.values.password}
+                                placeholder="Mật khẩu"
+                                type="password"
+                                InputProps={{
+                                    startAdornment: (
+                                        <InputAdornment position="start">
+                                            <LockIcon fontSize="large" sx={{ color: '#00a550' }} />
+                                        </InputAdornment>
+                                    ),
+                                }}
+                            />
+                            {props.touched.password && props.errors.password ? (
+                                <div id="errors">{props.errors.password}</div>
+                            ) : null}
+                            <Button className="btn_signin" type="submit" variant="contained" color="success">
+                                Đăng nhập
                             </Button>
-                            <Button
-                                variant="contained"
-                                color="error"
-                                startIcon={<GoogleIcon />}
-                                sx={{ padding: '1rem 4rem', fontSize: 'larger' }}
+                            <Divider sx={{ margin: '1rem' }} />
+                            <Typography
+                                variant="caption"
+                                display="block"
+                                gutterBottom
+                                align="center"
+                                sx={{ fontSize: 'medium', mt: 2, mb: 2 }}
                             >
-                                Google
-                            </Button>
-                        </Stack>
-                    </Box>
-                </Box>
-            </Container>
-        </ThemeProvider>
+                                Hoặc đăng nhập bằng tài khoản
+                            </Typography>
+                            <Stack
+                                direction="row"
+                                spacing={2}
+                                sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '1rem' }}
+                            >
+                                <Button
+                                    variant="contained"
+                                    startIcon={<FacebookIcon />}
+                                    sx={{ padding: '1rem 3rem', fontSize: 'medium', width: '40%' }}
+                                >
+                                    Facebook
+                                </Button>
+                                <Button
+                                    variant="contained"
+                                    color="error"
+                                    startIcon={<GoogleIcon />}
+                                    sx={{ padding: '1rem 3rem', fontSize: 'larger', width: '40%' }}
+                                >
+                                    Google
+                                </Button>
+                            </Stack>
+                        </Form>
+                    </div>
+                )}
+            </Formik>
+        </Formik>
     );
 }

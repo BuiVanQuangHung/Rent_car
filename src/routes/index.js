@@ -1,15 +1,15 @@
 // Pages
 import Home from '~/pages/Home';
-import Following from '~/pages/Following';
 import Profile from '~/pages/Profile';
-import Search from '~/pages/Search';
+import { Signup } from '~/pages/SignUp/signup';
+import Guide from '~/pages/Guide';
 
 // Public routes
 const publicRoutes = [
     { path: '/', component: Home },
-    { path: '/following', component: Following },
+    { path: '/signup', component: Signup },
     { path: '/@:nickname', component: Profile },
-    { path: '/search', component: Search, layout: null },
+    { path: '/howitwork', component: Guide },
 ];
 
 const privateRoutes = [];

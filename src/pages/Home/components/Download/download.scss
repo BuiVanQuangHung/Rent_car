@@ -1,0 +1,56 @@
+.container_download {
+    margin-top: -30rem;
+    background: url('https://www.mioto.vn/static/media/background.1a241ec7.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: -140px;
+    padding: 10rem 0;
+    height: 620px;
+    .content {
+        position: relative;
+        max-width: 1260px;
+        margin: 0 auto;
+        .img_phone {
+            position: absolute;
+            &:nth-child(1) {
+                left: 5%;
+                bottom: -500px;
+            }
+            &:nth-child(2) {
+                left: 25%;
+                bottom: -520px;
+            }
+        }
+        .content_download {
+            position: absolute;
+            right: 0;
+            top: 10rem;
+            h1 {
+                font-size: 4rem;
+            }
+            p {
+                margin: 2rem 0;
+                font-size: medium;
+            }
+            .store {
+                height: 100%;
+                width: 100%;
+                img {
+                    width: 200px;
+                    margin: 0 1rem;
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 600px) {
+    .container_divider {
+        .flex {
+            margin: 0 2rem;
+            justify-content: center;
+            max-width: 600px;
+            .content {
+            }
+        }
+    }
+}

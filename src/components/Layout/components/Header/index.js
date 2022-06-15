@@ -10,6 +10,9 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Login from './Login';
 import MenuIcon from '@mui/icons-material/Menu';
+import { Signup } from '~/pages/SignUp/signup';
+import { Link } from 'react-router-dom';
+
 const cx = classNames.bind(styles);
 const style = {
     position: 'absolute',
@@ -27,6 +30,8 @@ const Header = () => {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+
+    //! Render
     return (
         <div className={cx('container-fluid')}>
             <div className={cx('nav')}>
@@ -74,7 +79,9 @@ const Header = () => {
                     </Modal>
                 </div>
                 <div className={cx('signup')}>
-                    <button>Đăng kí</button>
+                    <button>
+                        <Link to="/signup">Đăng kí</Link>
+                    </button>
                 </div>
             </div>
             <div className={cx('img')}>
@@ -82,7 +89,7 @@ const Header = () => {
                 <img src="https://www.mioto.vn/static/media/right.cb9f81e8.svg" alt="" />
             </div>
             <div className={cx('menu_icon')}>
-                <MenuIcon fontSize='large'/>
+                <MenuIcon fontSize="large" />
             </div>
         </div>
     );
